@@ -1,0 +1,97 @@
+1693719318604	geckodriver	INFO	Listening on 127.0.0.1:55627
+1693719329447	geckodriver	INFO	Listening on 127.0.0.1:55642
+1694009624703	geckodriver	INFO	Listening on 127.0.0.1:64252
+1694009632122	geckodriver	INFO	Listening on 127.0.0.1:64265
+1695466326145	geckodriver	INFO	Listening on 127.0.0.1:64281
+1695466329171	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64282" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofiletOiPeX"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1695466329684	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1695466329788	Marionette	INFO	Listening on port 64292
+WebDriver BiDi listening on ws://127.0.0.1:64282
+Read port: 64292
+1695466330037	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:64282/devtools/browser/d837ca66-bfe6-45fa-9a67-006b0e429ad5
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://accounts.google.com."
+JavaScript warning: https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AYZoVheagca7L4VenyalJaEWKbTUfT0g7KvPnNzUUR9Zy74x9if4IgaytUELPZuLb5WXE2t6o8yWWg&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-1777398307%3A1695466335345891&theme=glif line 193 > injectedScript line 2 > eval line 2853 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://accounts.google.com."
+JavaScript warning: https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.XCHOJI6Wf1s.es5.O/ck=boq-identity.AccountsSignInUi.MySg6AF28LA.L.F4.O/am=DgARM48NgPhPE-fvGSeHAQAAAAAAAAAA1kB2/d=1/exm=AvtSve,Ctsu,EFQ78c,EGw7Od,EN3i8d,I6YDgd,IZ1fbc,IZT63,K0PMbc,KUM7Z,L1AAkb,LDQI,LEikZe,MpJwZc,NOeYWe,O6y8ed,PHUIyb,PrPYRd,Rusgnf,SCuOPb,STuCOe,SpsfSb,UPKV3d,UUJqVe,Uas9Hd,W2YXuc,YHI3We,YTxL4,ZUKRxc,_b,_tp,aW3pY,b3kMqb,bPkrc,bSspM,bTi8wc,byfTOb,eVCnO,fJpY1b,fqEYIb,hc6Ubd,hmHrle,inNHtf,kSPLL,lsjVmc,ltDFwf,lwddkf,mWLH9d,my67ye,n73qwf,njlZCf,oLggrd,pxq3x,qPfo0c,qmdT9,siKnQd,soHxf,t2srLd,tUnxGc,vHEMJe,vfuNJf,ws9Tlc,xBaz7b,xQtZb,yRXbo,ywOR5c,zbML3c,zr1jrb,zy0vNb/excm=_b,_tp,identifierview/ed=1/wt=2/ujg=1/rs=AOaEmlGBqgVsuxZpJ2Qh7kkg1S0ElRFkbQ/ee=ASJRFf:LANRae;Al0B8:kibjWe;DaIJ8c:iAskyc;EVNhjf:pw70Gc;EkYFhd:BDnJmb;EmZ2Bf:zr1jrb;Erl4fe:FloWmf;JsbNhc:Xd8iUd;LBgRLc:XVMNvd;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Oj465e:KG2eXe;Pjplud:EEDORb;QGR0gd:Mlhmy;SMDL4c:K0PMbc;SNUn3:ZwDk9d;UpnZUd:nnwwYc;XdiAjb:Nr4zW;a56pNe:JEfCwb;cEt90b:ws9Tlc;dIoSBb:SpsfSb;eBAeSb:zbML3c;iFQyKf:vfuNJf;io8t5d:yDVVkb;kMFpHd:OTA3Ae;nAFL3:NTMZac;nTuGK:JKNPM;oGtAuc:sOXFj;oSUNyd:K0PMbc;oXZmbc:tUnxGc;pXdRYb:fqEYIb;qddgKe:xQtZb;sP4Vbe:VwDzFe;uY49fb:COQbmf;ul9GGd:VDovNc;vNjB7d:YTxL4;wR5FRb:siKnQd;yxTchf:KUM7Z/m=RqjULd, line 18: Script terminated by timeout at:
+e@https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.XCHOJI6Wf1s.es5.O/ck=boq-identity.AccountsSignInUi.MySg6AF28LA.L.F4.O/am=DgARM48NgPhPE-fvGSeHAQAAAAAAAAAA1kB2/d=1/exm=AvtSve,Ctsu,EFQ78c,EGw7Od,EN3i8d,I6YDgd,IZ1fbc,IZT63,K0PMbc,KUM7Z,L1AAkb,LDQI,LEikZe,MpJwZc,NOeYWe,O6y8ed,PHUIyb,PrPYRd,Rusgnf,SCuOPb,STuCOe,SpsfSb,UPKV3d,UUJqVe,Uas9Hd,W2YXuc,YHI3We,YTxL4,ZUKRxc,_b,_tp,aW3pY,b3kMqb,bPkrc,bSspM,bTi8wc,byfTOb,eVCnO,fJpY1b,fqEYIb,hc6Ubd,hmHrle,inNHtf,kSPLL,lsjVmc,ltDFwf,lwddkf,mWLH9d,my67ye,n73qwf,njlZCf,oLggrd,pxq3x,qPfo0c,qmdT9,siKnQd,soHxf,t2srLd,tUnxGc,vHEMJe,vfuNJf,ws9Tlc,xBaz7b,xQtZb,yRXbo,ywOR5c,zbML3c,zr1jrb,zy0vNb/excm=_b,_tp,identifierview/ed=1/wt=2/ujg=1/rs=AOaEmlGBqgVsuxZpJ2Qh7kkg1S0ElRFkbQ/ee=ASJRFf:LANRae;Al0B8:kibjWe;DaIJ8c:iAskyc;EVNhjf:pw70Gc;EkYFhd:BDnJmb;EmZ2Bf:zr1jrb;Erl4fe:FloWmf;JsbNhc:Xd8iUd;LBgRLc:XVMNvd;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Oj465e:KG2eXe;Pjplud:EEDORb;QGR0gd:Mlhmy;SMDL4c:K0PMbc;SNUn3:ZwDk9d;UpnZUd:nnwwYc;XdiAjb:Nr4zW;a56pNe:JEfCwb;cEt90b:ws9Tlc;dIoSBb:SpsfSb;eBAeSb:zbML3c;iFQyKf:vfuNJf;io8t5d:yDVVkb;kMFpHd:OTA3Ae;nAFL3:NTMZac;nTuGK:JKNPM;oGtAuc:sOXFj;oSUNyd:K0PMbc;oXZmbc:tUnxGc;pXdRYb:fqEYIb;qddgKe:xQtZb;sP4Vbe:VwDzFe;uY49fb:COQbmf;ul9GGd:VDovNc;vNjB7d:YTxL4;wR5FRb:siKnQd;yxTchf:KUM7Z/m=RqjULd:18:33
+oya/<@https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.XCHOJI6Wf1s.es5.O/ck=boq-identity.AccountsSignInUi.MySg6AF28LA.L.F4.O/am=DgARM48NgPhPE-fvGSeHAQAAAAAAAAAA1kB2/d=1/exm=AvtSve,Ctsu,EFQ78c,EGw7Od,EN3i8d,I6YDgd,IZ1fbc,IZT63,K0PMbc,KUM7Z,L1AAkb,LDQI,LEikZe,MpJwZc,NOeYWe,O6y8ed,PHUIyb,PrPYRd,Rusgnf,SCuOPb,STuCOe,SpsfSb,UPKV3d,UUJqVe,Uas9Hd,W2YXuc,YHI3We,YTxL4,ZUKRxc,_b,_tp,aW3pY,b3kMqb,bPkrc,bSspM,bTi8wc,byfTOb,eVCnO,fJpY1b,fqEYIb,hc6Ubd,hmHrle,inNHtf,kSPLL,lsjVmc,ltDFwf,lwddkf,mWLH9d,my67ye,n73qwf,njlZCf,oLggrd,pxq3x,qPfo0c,qmdT9,siKnQd,soHxf,t2srLd,tUnxGc,vHEMJe,vfuNJf,ws9Tlc,xBaz7b,xQtZb,yRXbo,ywOR5c,zbML3c,zr1jrb,zy0vNb/excm=_b,_tp,identifierview/ed=1/wt=2/ujg=1/rs=AOaEmlGBqgVsuxZpJ2Qh7kkg1S0ElRFkbQ/ee=ASJRFf:LANRae;Al0B8:kibjWe;DaIJ8c:iAskyc;EVNhjf:pw70Gc;EkYFhd:BDnJmb;EmZ2Bf:zr1jrb;Erl4fe:FloWmf;JsbNhc:Xd8iUd;LBgRLc:XVMNvd;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Oj465e:KG2eXe;Pjplud:EEDORb;QGR0gd:Mlhmy;SMDL4c:K0PMbc;SNUn3:ZwDk9d;UpnZUd:nnwwYc;XdiAjb:Nr4zW;a56pNe:JEfCwb;cEt90b:ws9Tlc;dIoSBb:SpsfSb;eBAeSb:zbML3c;iFQyKf:vfuNJf;io8t5d:yDVVkb;kMFpHd:OTA3Ae;nAFL3:NTMZac;nTuGK:JKNPM;oGtAuc:sOXFj;oSUNyd:K0PMbc;oXZmbc:tUnxGc;pXdRYb:fqEYIb;qddgKe:xQtZb;sP4Vbe:VwDzFe;uY49fb:COQbmf;ul9GGd:VDovNc;vNjB7d:YTxL4;wR5FRb:siKnQd;yxTchf:KUM7Z/m=RqjULd:19:30
+c@https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en_US.XCHOJI6Wf1s.es5.O/ck=boq-identity.AccountsSignInUi.MySg6AF28LA.L.F4.O/am=DgARM48NgPhPE-fvGSeHAQAAAAAAAAAA1kB2/d=1/exm=AvtSve,Ctsu,EFQ78c,EGw7Od,EN3i8d,I6YDgd,IZ1fbc,IZT63,K0PMbc,KUM7Z,L1AAkb,LDQI,LEikZe,MpJwZc,NOeYWe,O6y8ed,PHUIyb,PrPYRd,Rusgnf,SCuOPb,STuCOe,SpsfSb,UPKV3d,UUJqVe,Uas9Hd,W2YXuc,YHI3We,YTxL4,ZUKRxc,_b,_tp,aW3pY,b3kMqb,bPkrc,bSspM,bTi8wc,byfTOb,eVCnO,fJpY1b,fqEYIb,hc6Ubd,hmHrle,inNHtf,kSPLL,lsjVmc,ltDFwf,lwddkf,mWLH9d,my67ye,n73qwf,njlZCf,oLggrd,pxq3x,qPfo0c,qmdT9,siKnQd,soHxf,t2srLd,tUnxGc,vHEMJe,vfuNJf,ws9Tlc,xBaz7b,xQtZb,yRXbo,ywOR5c,zbML3c,zr1jrb,zy0vNb/excm=_b,_tp,identifierview/ed=1/wt=2/ujg=1/rs=AOaEmlGBqgVsuxZpJ2Qh7kkg1S0ElRFkbQ/ee=ASJRFf:LANRae;Al0B8:kibjWe;DaIJ8c:iAskyc;EVNhjf:pw70Gc;EkYFhd:BDnJmb;EmZ2Bf:zr1jrb;Erl4fe:FloWmf;JsbNhc:Xd8iUd;LBgRLc:XVMNvd;Me32dd:MEeYgc;NPKaK:PVlQOd;NSEoX:lazG7b;Oj465e:KG2eXe;Pjplud:EEDORb;QGR0gd:Mlhmy;SMDL4c:K0PMbc;SNUn3:ZwDk9d;UpnZUd:nnwwYc;XdiAjb:Nr4zW;a56pNe:JEfCwb;cEt90b:ws9Tlc;dIoSBb:SpsfSb;eBAeSb:zbML3c;iFQyKf:vfuNJf;io8t5d:yDVVkb;kMFpHd:OTA3Ae;nAFL3:NTMZac;nTuGK:JKNPM;oGtAuc:sOXFj;oSUNyd:K0PMbc;oXZmbc:tUnxGc;pXdRYb:fqEYIb;qddgKe:xQtZb;sP4Vbe:VwDzFe;uY49fb:COQbmf;ul9GGd:VDovNc;vNjB7d:YTxL4;wR5FRb:siKnQd;yxTchf:KUM7Z/m=RqjULd:14:3138
+
+1695466348362	Marionette	INFO	Stopped listening on port 64292
+Dynamically enable window occlusion 1
+1695467316798	geckodriver	INFO	Listening on 127.0.0.1:65480
+1695467319832	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "65481" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofileO4MNsT"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1695467320346	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1695467320453	Marionette	INFO	Listening on port 65490
+WebDriver BiDi listening on ws://127.0.0.1:65481
+Read port: 65490
+1695467320697	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:65481/devtools/browser/a185b887-90c9-48d9-ab8d-53ca2058e3a1
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://accounts.google.com."
+JavaScript warning: https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=AYZoVhdZsLebCEFiiMIhHMAy4dVO_oPuLg4uRPB-XzClLJva4nbm14q_wtITJJzcPg2nDv1fMRQ5bQ&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S873097262%3A1695467325794856&theme=glif#inbox line 193 > injectedScript line 2 > eval line 1532 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://accounts.google.com."
+1695467379423	Marionette	INFO	Stopped listening on port 65490
+Dynamically enable window occlusion 1
+1701493137819	geckodriver	INFO	Listening on 127.0.0.1:59702
+1701493140878	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59703" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofileNYTJcv"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1701493141578	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1701493141726	Marionette	INFO	Listening on port 59711
+WebDriver BiDi listening on ws://127.0.0.1:59703
+Read port: 59711
+1701493141977	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:59703/devtools/browser/57a80e09-062c-48c9-9b22-fddb2f150966
+JavaScript warning: https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/CrossCommon.726ee1.js, line 1: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.flipkart.com."
+JavaScript warning: https://static-assets-web.flixcart.com/px/gNtTli3A/init.js, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1701493171631	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://static-assets-web.flixcart.com/px/gNtTli3A/init.js, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://static-assets-web.flixcart.com/px/gNtTli3A/init.js, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://js-agent.newrelic.com/spa-aggregate.e6b09d52-1.236.0.min.js, line 1: Script terminated by timeout at:
+2782/q/<@https://js-agent.newrelic.com/spa-aggregate.e6b09d52-1.236.0.min.js:1:12880
+v@https://www.flipkart.com/apple-iphone-14-starlight-128-gb/p/itm3485a56f6e676?pid=MOBGHWFHABH3G73H&lid=LSTMOBGHWFHABH3G73HCNASCL&marketplace=FLIPKART&q=apple+mobile&store=tyy%2F4io&spotlightTagId=BestsellerId_tyy%2F4io&srno=s_1_5&otracker=search&otracker1=search&fm=organic&iid=5c8927c9-8a98-48ef-9647-2fabb2855959.MOBGHWFHABH3G73H.SEARCH&ppt=None&ppn=None&ssid=e0kccpa7io0000001701493155604&qH=b8b0a2cc10cbd87d:17:7703
+o@https://www.flipkart.com/apple-iphone-14-starlight-128-gb/p/itm3485a56f6e676?pid=MOBGHWFHABH3G73H&lid=LSTMOBGHWFHABH3G73HCNASCL&marketplace=FLIPKART&q=apple+mobile&store=tyy%2F4io&spotlightTagId=BestsellerId_tyy%2F4io&srno=s_1_5&otracker=search&otracker1=search&fm=organic&iid=5c8927c9-8a98-48ef-9647-2fabb2855959.MOBGHWFHABH3G73H.SEARCH&ppt=None&ppn=None&ssid=e0kccpa7io0000001701493155604&qH=b8b0a2cc10cbd87d:17:14517
+nrWrapper@https://www.flipkart.com/apple-iphone-14-starlight-128-gb/p/itm3485a56f6e676?pid=MOBGHWFHABH3G73H&lid=LSTMOBGHWFHABH3G73HCNASCL&marketplace=FLIPKART&q=apple+mobile&store=tyy%2F4io&spotlightTagId=BestsellerId_tyy%2F4io&srno=s_1_5&otracker=search&otracker1=search&fm=organic&iid=5c8927c9-8a98-48ef-9647-2fabb2855959.MOBGHWFHABH3G73H.SEARCH&ppt=None&ppn=None&ssid=e0kccpa7io0000001701493155604&qH=b8b0a2cc10cbd87d:17:14345
+
+1701493318815	Marionette	INFO	Stopped listening on port 59711
+Dynamically enable window occlusion 1
+1701493356722	geckodriver	INFO	Listening on 127.0.0.1:59884
+1701493359761	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59885" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofiley7S9YB"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1701493360304	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1701493360452	Marionette	INFO	Listening on port 59892
+WebDriver BiDi listening on ws://127.0.0.1:59885
+Read port: 59892
+1701493360672	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:59885/devtools/browser/cdaccc5d-2aef-4b4e-9e86-a80da6bc154f
+JavaScript warning: https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/CrossCommon.726ee1.js, line 1: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.flipkart.com."
+JavaScript warning: https://static-assets-web.flixcart.com/px/gNtTli3A/init.js, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://www.flipkart.com/search?q=apple%20mobile&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off, line 17: Script terminated by timeout at:
+take@https://www.flipkart.com/search?q=apple%20mobile&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off:17:34004
+9026/L/<@https://js-agent.newrelic.com/metrics-aggregate.3dc53903-1.236.0.min.js:1:4969
+createPayload@https://js-agent.newrelic.com/148.1a20d5fe-1.236.0.min.js:2:4307
+sendX@https://js-agent.newrelic.com/148.1a20d5fe-1.236.0.min.js:2:1663
+o@https://js-agent.newrelic.com/session_trace-aggregate.83105561-1.236.0.min.js:1:1573
+2573/runHarvest/<@https://js-agent.newrelic.com/session_trace-aggregate.83105561-1.236.0.min.js:1:1687
+runHarvest@https://js-agent.newrelic.com/session_trace-aggregate.83105561-1.236.0.min.js:1:1673
+unload@https://js-agent.newrelic.com/session_trace-aggregate.83105561-1.236.0.min.js:1:727
+nrWrapper@https://www.flipkart.com/search?q=apple%20mobile&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off:17:14384
+
+1701493390564	Marionette	INFO	Stopped listening on port 59892
+Dynamically enable window occlusion 1
+console.error: (new Error("Polling for changes failed: NetworkError: Network request failed.", "resource://services-settings/remote-settings.sys.mjs", 321))
+1701493390661	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, channelStatus: 2147500036, errorCode: 2, reason: error
+console.error: Region.sys.mjs: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", "resource://gre/modules/Region.sys.mjs", 738))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 411))

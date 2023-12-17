@@ -1,0 +1,11 @@
+{
+
+	"test_set_1":
+		{
+			"search_input": "apple mobile",
+			"item_input_1": "APPLE iPhone 14 (Starlight, 128 GB)",
+			"item_input_2": "APPLE iPhone 12 (Black, 64 GB)",
+			"brand_name": "SAMSUNG",
+			"product_name": "SAMSUNG Galaxy M14 5G (Icy Silver, 128 GB)"
+		}
+}
