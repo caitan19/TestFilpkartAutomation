@@ -18,6 +18,7 @@ class Utils(softest.TestCase):
                 print("Test failed")
         self.assert_all()
 
+<<<<<<< HEAD
     def assertRatingsText(self, ratings_list, value):
         for item1 in ratings_list:
             if item1 != '' and type(item1) == str:
@@ -25,6 +26,18 @@ class Utils(softest.TestCase):
                 print("The rating is: ", item_rating)
                 self.soft_assert(self.assertGreaterEqual, item_rating, value)
                 if float(item_rating) >= float(value):
+=======
+    def assertRatingsText(self, list, value):
+        rate = value.find("+")
+        rate_num = value[0:rate]
+        for item1 in list:
+            if item1.text != '':
+                ind = item1.text.find("/")
+                rating = item1.text[0:ind]
+                print("The rating is: ", float(rating))
+                self.soft_assert(self.assertGreaterEqual, rating, rate_num)
+                if float(rating) >= int(rate_num) * 1.0:
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
                     print("Test passed")
                 else:
                     print("Test failed")
@@ -56,14 +69,24 @@ class Utils(softest.TestCase):
                 print("Email not found in sent box: {0}".format(sent_mail.text))
         self.assert_all()
 
+<<<<<<< HEAD
     def assertAdvanceSerachToList(self, sent_emails_recp_list, recipient):
         if len(sent_emails_recp_list) > 0:
+=======
+    def assertAdvanceSerachToList(self, recipient, sent_emails_recp_list):
+        #print("RECPT",sent_emails_recp_list)
+        if sent_emails_recp_list is not None:
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
             for recp in sent_emails_recp_list:
                 # self.assertEqual(recp.get_attribute('innerHTML'), recipient)
                 # print("TEXT IS {0}: ".format(recp.text))
                 self.soft_assert(self.assertEqual, recp.text, recipient)
                 if recp.text == recipient:
                     print("Search successful. All emails for {0} found.".format(recp.text))
+<<<<<<< HEAD
+=======
+                    break
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
                 '''else:
                     print("Search unsuccessful. No emails for {0} found.".format(recp.get_attribute('innerHTML')))'''
             # self.assert_all()
@@ -71,6 +94,7 @@ class Utils(softest.TestCase):
             # self.assertRaises(NoSuchElementException)
             # self.assertNotEqual(if_empty, "Nothing to see here.")
             print("Search unsuccessful. No emails for {0} found.".format(recipient))
+<<<<<<< HEAD
 
     def verifyItemsInCart(self, items_in_cart, item_input):
         list_len = len(items_in_cart)
@@ -88,6 +112,9 @@ class Utils(softest.TestCase):
         #temp = ["61,999", "61,999", "61,999"]
         #self.assertTrue(len(set(temp)) == len(price_list))
         self.assertTrue(len(set(price_list)) == len(price_list))
+=======
+            self.assertTrue(False, "Search unsuccessful. No emails for {0} found.".format(recipient))
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
 
     def custom_logger(logLevel=logging.DEBUG):
         # Get the function name

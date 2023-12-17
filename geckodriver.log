@@ -39,6 +39,7 @@ JavaScript warning: https://accounts.google.com/v3/signin/identifier?continue=ht
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://accounts.google.com."
 1695467379423	Marionette	INFO	Stopped listening on port 65490
 Dynamically enable window occlusion 1
+<<<<<<< HEAD
 1701493137819	geckodriver	INFO	Listening on 127.0.0.1:59702
 1701493140878	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "59703" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofileNYTJcv"
 console.warn: services.settings: Ignoring preference override of remote settings server
@@ -95,3 +96,5 @@ console.error: (new Error("Polling for changes failed: NetworkError: Network req
 1701493390661	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, channelStatus: 2147500036, errorCode: 2, reason: error
 console.error: Region.sys.mjs: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", "resource://gre/modules/Region.sys.mjs", 738))
 console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 411))
+=======
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841

@@ -2225,6 +2225,7 @@ Australia:
 2023-10-02 18:39:12,367 - DEBUG :- Application for the role of QA Automation Tester (m/f)_1696252145930
 2023-10-02 18:55:06,155 - DEBUG :- WAKE UP!!
 2023-10-07 10:43:24,509 - DEBUG :- Application for the role of QA Automation Tester (m/f)_1696655598044
+<<<<<<< HEAD
 2023-10-11 18:58:12,049 - DEBUG :- On Flipkart home page
 2023-10-11 18:58:43,209 - DEBUG :- On Flipkart home page
 2023-10-11 19:06:00,207 - DEBUG :- On Flipkart home page
@@ -13327,3 +13328,11 @@ NEXT
 2023-12-05 19:06:09,974 - DEBUG :- Clicked on SAMSUNG
 2023-12-05 19:06:10,703 - DEBUG :- Item is SAMSUNG Galaxy M14 5G (Icy Silver, 128 GB)
 2023-12-05 19:06:10,732 - DEBUG :- Clicked on SAMSUNG Galaxy M14 5G (Icy Silver, 128 GB)
+=======
+2023-11-21 20:29:22,343 - DEBUG :- Test subject_1700578756103
+2023-11-21 20:31:27,824 - DEBUG :- Test subject_1700578881589
+2023-11-21 20:33:00,204 - DEBUG :- Test subject_1700578972918
+2023-11-22 08:41:56,480 - DEBUG :- Test subject_1700622710208
+2023-11-22 08:44:05,084 - DEBUG :- Test subject_1700622838773
+2023-11-22 08:45:03,365 - DEBUG :- Test subject_1700622897263
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841

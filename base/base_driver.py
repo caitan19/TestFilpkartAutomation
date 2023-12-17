@@ -19,10 +19,13 @@ class BaseDriver(softest.TestCase):
 
     IFRAME_POPUP = "//iframe[@id='webklipper-publisher-widget-container-notification-frame']"
     POPUP_CLOSE_BTN = "//i[@class='wewidgeticon we_close']"
+<<<<<<< HEAD
     NEXT_PAGE_BTN = "//span[normalize-space()='Next']"
 
     def getNextPageBtn(self):
         return self.wait_until_element_is_clickable(By.XPATH, self.NEXT_PAGE_BTN)
+=======
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
 
     def page_scroll(self):
         pageLength = self.driver.execute_script(
@@ -30,13 +33,21 @@ class BaseDriver(softest.TestCase):
         match = False
         while match == False:
             lastCount = pageLength
+<<<<<<< HEAD
             time.sleep(2)
+=======
+            time.sleep(4)
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
             pageLength = self.driver.execute_script(
                 "window.scrollTo(0, document.body.scrollHeight); var pageLength = document.body.scrollHeight; return pageLength;")
             if lastCount == pageLength:
                 match = True
 
+<<<<<<< HEAD
         time.sleep(2)
+=======
+        time.sleep(4)
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
 
     def close_popup(self):
         popup_iframe = self.wait_for_presence_of_element(By.XPATH, self.IFRAME_POPUP)
@@ -94,6 +105,7 @@ class BaseDriver(softest.TestCase):
 
     def switch_browser_tabs(self, tab_number, tab_type):
         # http://allselenium.info/handling-multiple-windows-python-selenium/
+<<<<<<< HEAD
         if tab_type == "descendant":
             # If a newly opened tab, then
             self.log.debug("Moving to {0} child tab".format(self.driver.current_window_handle))
@@ -110,3 +122,26 @@ class BaseDriver(softest.TestCase):
         self.driver.execute_script("arguments[0].click()", next_btn)
         self.page_scroll()
         time.sleep(1)
+=======
+        # get current window handle
+        '''curr_win_tab = self.driver.current_window_handle
+
+        # get first child window
+        child_win_tab = self.driver.window_handles
+        if tab == "child":
+            print("Child window")
+            self.driver.switch_to.window(self.driver.window_handles[1])
+                    # break
+        elif tab == "parent":
+            #self.driver.close()
+            self.driver.close()
+            print("Parent window")
+            self.driver.switch_to.window(self.driver.window_handles[0])'''
+        if tab_type == "descendant":
+            # If a newly opened tab, then
+            self.driver.switch_to.window(self.driver.window_handles[tab_number])
+        else:
+            # If moving to a previous tab, then close the current tab and then move
+            self.driver.close()
+            self.driver.switch_to.window(self.driver.window_handles[tab_number])
+>>>>>>> 2314f7628be470adb715f66886f5842285c84841
