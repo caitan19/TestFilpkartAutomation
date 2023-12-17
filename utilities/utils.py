@@ -18,15 +18,6 @@ class Utils(softest.TestCase):
                 print("Test failed")
         self.assert_all()
 
-<<<<<<< HEAD
-    def assertRatingsText(self, ratings_list, value):
-        for item1 in ratings_list:
-            if item1 != '' and type(item1) == str:
-                item_rating = float(item1)
-                print("The rating is: ", item_rating)
-                self.soft_assert(self.assertGreaterEqual, item_rating, value)
-                if float(item_rating) >= float(value):
-=======
     def assertRatingsText(self, list, value):
         rate = value.find("+")
         rate_num = value[0:rate]
@@ -37,64 +28,10 @@ class Utils(softest.TestCase):
                 print("The rating is: ", float(rating))
                 self.soft_assert(self.assertGreaterEqual, rating, rate_num)
                 if float(rating) >= int(rate_num) * 1.0:
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
                     print("Test passed")
                 else:
                     print("Test failed")
         self.assert_all()
-
-    def assertUsername(self, username_field_txt):
-        print(username_field_txt)
-        if username_field_txt == "Sign in to Yahoo Mail":
-            self.assertNotEqual(username_field_txt, "Sign in to Yahoo Mail")
-            print("Incorrect username entered. Still on the username input page")
-        elif "Enter" in username_field_txt:
-            self.assertIn("Enter", username_field_txt)
-            print("Correct username entered. Moved to the password input page")
-
-    def assertPassword(self, page_title):
-        self.assertIn("caitan19@yahoo.com", page_title)
-        if "caitan19@yahoo.com" in page_title:
-            print("Correct password entered. Login successful")
-        else:
-            print("Incorrect password entered. Still on the password input page")
-
-    def assertSentMail(self, sent_emails_list, email_subject):
-        for sent_mail in sent_emails_list:
-            self.soft_assert(self.assertEqual, sent_mail.text, email_subject)
-            if sent_mail.text == email_subject:
-                print("Email found in sent box: {0}".format(sent_mail.text))
-                break
-            else:
-                print("Email not found in sent box: {0}".format(sent_mail.text))
-        self.assert_all()
-
-<<<<<<< HEAD
-    def assertAdvanceSerachToList(self, sent_emails_recp_list, recipient):
-        if len(sent_emails_recp_list) > 0:
-=======
-    def assertAdvanceSerachToList(self, recipient, sent_emails_recp_list):
-        #print("RECPT",sent_emails_recp_list)
-        if sent_emails_recp_list is not None:
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
-            for recp in sent_emails_recp_list:
-                # self.assertEqual(recp.get_attribute('innerHTML'), recipient)
-                # print("TEXT IS {0}: ".format(recp.text))
-                self.soft_assert(self.assertEqual, recp.text, recipient)
-                if recp.text == recipient:
-                    print("Search successful. All emails for {0} found.".format(recp.text))
-<<<<<<< HEAD
-=======
-                    break
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
-                '''else:
-                    print("Search unsuccessful. No emails for {0} found.".format(recp.get_attribute('innerHTML')))'''
-            # self.assert_all()
-        else:
-            # self.assertRaises(NoSuchElementException)
-            # self.assertNotEqual(if_empty, "Nothing to see here.")
-            print("Search unsuccessful. No emails for {0} found.".format(recipient))
-<<<<<<< HEAD
 
     def verifyItemsInCart(self, items_in_cart, item_input):
         list_len = len(items_in_cart)
@@ -109,12 +46,9 @@ class Utils(softest.TestCase):
         self.assertIn(item_input, item_list, "Item is not in cart.")
 
     def assertDifference(self, price_list):
-        #temp = ["61,999", "61,999", "61,999"]
-        #self.assertTrue(len(set(temp)) == len(price_list))
+        # temp = ["61,999", "61,999", "61,999"]
+        # self.assertTrue(len(set(temp)) == len(price_list))
         self.assertTrue(len(set(price_list)) == len(price_list))
-=======
-            self.assertTrue(False, "Search unsuccessful. No emails for {0} found.".format(recipient))
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
 
     def custom_logger(logLevel=logging.DEBUG):
         # Get the function name

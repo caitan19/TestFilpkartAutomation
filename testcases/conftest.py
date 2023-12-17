@@ -22,8 +22,6 @@ import geckodriver_autoinstaller
 def setup(request, browser):
     global driver
     if browser == "chrome" or browser == None:
-<<<<<<< HEAD
-=======
         '''options = {}
         chrome_options = uc.ChromeOptions()
         chrome_options.add_argument('--user-data-dir=hash')
@@ -37,7 +35,6 @@ def setup(request, browser):
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument('--disable-application-cache')
         driver = uc.Chrome(seleniumwire_options=options, options=chrome_options)'''
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     elif browser == "ff":
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
@@ -47,11 +44,7 @@ def setup(request, browser):
         print("Invalid browser option")
     # ewait = WebDriverWait(driver, 30)
     driver.maximize_window()
-<<<<<<< HEAD
     driver.get("https://www.flipkart.com/")
-=======
-    driver.get("https://mail.yahoo.com/d/folders/1")
->>>>>>> 2314f7628be470adb715f66886f5842285c84841
     request.cls.driver = driver
     # request.cls.ewait = ewait
     yield
