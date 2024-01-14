@@ -48,5 +48,5 @@ class HomePage(BaseDriver):
 
     # execution function
     def SearchProduct(self, search_input):
-        self.clickLoginCloseBtn()
+        #self.clickLoginCloseBtn()
         self.inputSearchItem(search_input)

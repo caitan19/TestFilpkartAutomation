@@ -127,11 +127,11 @@ class BaseDriver(softest.TestCase):
             #self.driver.close()
             self.driver.close()
             print("Parent window")
-            self.driver.switch_to.window(self.driver.window_handles[0])'''
+            self.driver.switch_to.window(self.driver.window_handles[0])
         if tab_type == "descendant":
             # If a newly opened tab, then
             self.driver.switch_to.window(self.driver.window_handles[tab_number])
         else:
             # If moving to a previous tab, then close the current tab and then move
             self.driver.close()
-            self.driver.switch_to.window(self.driver.window_handles[tab_number])
+            self.driver.switch_to.window(self.driver.window_handles[tab_number])'''

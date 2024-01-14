@@ -19,14 +19,14 @@ class Utils(softest.TestCase):
         self.assert_all()
 
     def assertRatingsText(self, list, value):
-        rate = value.find("+")
-        rate_num = value[0:rate]
+        #rate = value.find("+")
+        rate_num = value #value[0:rate]
         for item1 in list:
-            if item1.text != '':
-                ind = item1.text.find("/")
-                rating = item1.text[0:ind]
+            if item1 != '':
+                #ind = item1.find("/")
+                rating = item1#.text[0:ind]
                 print("The rating is: ", float(rating))
-                self.soft_assert(self.assertGreaterEqual, rating, rate_num)
+                self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)
                 if float(rating) >= int(rate_num) * 1.0:
                     print("Test passed")
                 else:

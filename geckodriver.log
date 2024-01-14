@@ -98,3 +98,26 @@ console.error: Region.sys.mjs: "Error fetching region" (new TypeError("NetworkEr
 console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 411))
 =======
 >>>>>>> 2314f7628be470adb715f66886f5842285c84841
+1705120668463	geckodriver	INFO	Listening on 127.0.0.1:55483
+1705120671512	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55484" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Caitan\\AppData\\Local\\Temp\\rust_mozprofilefrkXQZ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1705120672369	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1705120672936	Marionette	INFO	Listening on port 55496
+WebDriver BiDi listening on ws://127.0.0.1:55484
+Read port: 55496
+1705120673329	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55484/devtools/browser/08c6e762-7604-498f-935e-bda700d40bd2
+JavaScript warning: https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/CrossCommon.beac53.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/CrossCommon.beac53.js, line 1: unreachable code after return statement
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.flipkart.com."
+JavaScript warning: https://static-assets-web.flixcart.com/px/gNtTli3A/init.js, line 2: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1705120702424	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+console.log: "RemoteSettingsWorker error: DataError: IndexedDB: records, timestamps execute() Data provided to an operation does not meet requirements."
+console.error: (new RemoteSettingsWorkerError("DataError: IndexedDB: records, timestamps execute() Data provided to an operation does not meet requirements.", "resource://services-settings/RemoteSettingsWorker.sys.mjs", 34))
+1705120746976	Marionette	INFO	Stopped listening on port 55496
+JavaScript warning: https://www.flipkart.com/search?q=mobile%20phone&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off, line 17: Script terminated by timeout at:
+nrWrapper@https://www.flipkart.com/search?q=mobile%20phone&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off:17:14234
+
+Dynamically enable window occlusion 1

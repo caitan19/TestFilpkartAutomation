@@ -3,11 +3,332 @@
   <head>
     <meta charset="utf-8"/>
     <title id="head-title">testReport.html</title>
-      <link href="assets\style.css" rel="stylesheet" type="text/css"/>
+      <style type="text/css">body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+#environment ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+.col-links__extra {
+  margin-right: 3px;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.logwrapper {
+  max-height: 230px;
+  overflow-y: scroll;
+  background-color: #e6e6e6;
+}
+.logwrapper.expanded {
+  max-height: none;
+}
+.logwrapper.expanded .logexpander:after {
+  content: "collapse [-]";
+}
+.logwrapper .logexpander {
+  z-index: 1;
+  position: sticky;
+  top: 10px;
+  width: max-content;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px 0 10px calc(100% - 80px);
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.logwrapper .logexpander:after {
+  content: "expand [+]";
+}
+.logwrapper .logexpander:hover {
+  color: #000;
+  border-color: #000;
+}
+.logwrapper .log {
+  min-height: 40px;
+  position: relative;
+  top: -50px;
+  height: calc(100% + 50px);
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  padding-right: 80px;
+  white-space: pre-wrap;
+}
+
+div.media {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin: 0 5px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: 25px auto 25px;
+  align-items: center;
+  flex: 1 1;
+  overflow: hidden;
+  height: 200px;
+}
+
+.media-container--fullscreen {
+  grid-template-columns: 0px auto 0px;
+}
+
+.media-container__nav--right,
+.media-container__nav--left {
+  text-align: center;
+  cursor: pointer;
+}
+
+.media-container__viewport {
+  cursor: pointer;
+  text-align: center;
+  height: inherit;
+}
+.media-container__viewport img,
+.media-container__viewport video {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.media__name,
+.media__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 25px;
+  align-items: center;
+}
+
+.collapsible td:not(.col-links) {
+  cursor: pointer;
+}
+.collapsible td:not(.col-links):hover::after {
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.col-result {
+  width: 130px;
+}
+.col-result:hover::after {
+  content: " (hide details)";
+}
+
+.col-result.collapsed:hover::after {
+  content: " (show details)";
+}
+
+#environment-header h2:hover::after {
+  content: " (hide details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#environment-header.collapsed h2:hover::after {
+  content: " (show details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+.sortable.desc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: -12.5px;
+  border: 10px solid #4caf50;
+  border-bottom: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.sortable.asc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: 12.5px;
+  border: 10px solid #4caf50;
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.hidden, .summary__reload__button.hidden {
+  display: none;
+}
+
+.summary__data {
+  flex: 0 0 550px;
+}
+.summary__reload {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+.summary__reload__button {
+  flex: 0 0 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background-color: #4caf50;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.summary__reload__button:hover {
+  background-color: #46a049;
+}
+.summary__spacer {
+  flex: 0 0 550px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters,
+.collapse {
+  display: flex;
+  align-items: center;
+}
+.filters button,
+.collapse button {
+  color: #999;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.filters button:hover,
+.collapse button:hover {
+  color: #ccc;
+}
+
+.filter__label {
+  margin-right: 10px;
+}
+
+      </style>
+    
   </head>
   <body>
     <h1 id="title">testReport.html</h1>
-    <p>Report generated on 17-Dec-2023 at 11:53:41 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+    <p>Report generated on 13-Jan-2024 at 09:43:48 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
         v4.0.1</p>
     <div id="environment-header">
       <h2>Environment</h2>
@@ -61,7 +382,7 @@
         <h2>Summary</h2>
         <div class="additional-summary prefix">
         </div>
-        <p class="run-count">1 test took 00:00:22.</p>
+        <p class="run-count">1 test took 00:01:14.</p>
         <p class="filter">(Un)check the boxes to filter the results.</p>
         <div class="summary__reload">
           <div class="summary__reload__button hidden" onclick="location.reload()">
@@ -71,10 +392,10 @@
         <div class="summary__spacer"></div>
         <div class="controls">
           <div class="filters">
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
-            <span class="failed">0 Failed,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
-            <span class="passed">1 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" />
+            <span class="failed">1 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled/>
+            <span class="passed">0 Passed,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
             <span class="skipped">0 Skipped,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
@@ -108,7 +429,7 @@
     </table>
   </body>
   <footer>
-    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.11.4&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.22621-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;7.4.0&#34;, &#34;pluggy&#34;: &#34;1.2.0&#34;}, &#34;Plugins&#34;: {&#34;html&#34;: &#34;4.0.1&#34;, &#34;metadata&#34;: &#34;3.0.0&#34;}}, &#34;tests&#34;: {&#34;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_compare_items_1_test_set_1&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;URL&#34;, &#34;format_type&#34;: &#34;url&#34;, &#34;content&#34;: &#34;https://www.yatra.com/&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_compare_items_1_test_set_1&#34;, &#34;duration&#34;: &#34;00:00:17&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_compare_items_1_test_set_1&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:17&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;a target=\&#34;_blank\&#34; href=\&#34;https://www.yatra.com/\&#34; class=\&#34;col-links__extra url\&#34;&gt;URL&lt;/a&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Acer\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is AirTyme\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Alcatel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is amp\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is anee\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is ANGAGE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is APPLE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is ASUS\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is AXXA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Beetel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Benco\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is BlackBear\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is BlackBerry\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is BlackZone\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Byond\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is CALLBAR\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is CAUL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Celkon\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Cellecor\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Chilli\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Comio\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Coolpad\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Cospex\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is DAPS\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is DELL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is DETEL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is DIZO\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Do\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Doogee\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is DUOSS\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is E L\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is E&amp;L\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Easyfone\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Ecotel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is EL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Elephone\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Energizer\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Eunity\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is FELSONE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Fliky\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is FLOUNDER\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is FONEME\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Forme\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Gamexy\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Gamma\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Geotel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GFive\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GIONEE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GIVA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GOLY\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Good One\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Google\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Grabo\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GRAVITEL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is GREENBERRI\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Heemax\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Hexin\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Hicell\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Honor\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is hopi5\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is HOTLINE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is HP\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is HTC\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Huawei\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Hyve\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is I Kall\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is IAIR\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is iball\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Idea\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Infinix\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Infocus\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is intaek\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Intex\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is IQOO\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is iSmart\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is itel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is iVoomi\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Jalsa\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Jio\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Jivi\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Jmax\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is KARA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is KARBONN\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is KAWL\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Kechadda\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Kechaoda\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Kenxinda\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Krex\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Kult\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is KXD\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is LAVA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is LeEco\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Lemon\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Lenovo\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Lephone\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is LG\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Lvix\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is LYF\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is M-tech\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MAFE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Maplin\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MarQ by Flipkart\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Mate\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MAXKING\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MAXX\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MAYA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MBO\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Meizu\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Mi\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Micromax\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MITASHI\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is mobiistar\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Monix\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MOTOROLA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MTR\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MTS\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is MU\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Muphone\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Nextbit\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Nokia\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Nothing\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Nubia\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is nuveck\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Nuvo\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Olive\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is oneme\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is OnePlus\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is ONIDA\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is OPPO\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Otho\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Panasonic\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Peace\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Pear\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is PHILIPS\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Pious\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Pluzz\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is POCO\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Poya\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Protruly\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is realme\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is REDMI\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is ringme\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Rokea\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is RYTE\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is sainatel\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is Salora\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:54 Item is SAMSUNG\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:56 Clicked on SAMSUNG\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F13 (Sunrise Copper, 64 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (OMG Black, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F13 (Waterfall Blue, 64 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F13 (Nightsky Green, 64 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (GOAT Green, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (GOAT Green, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (B.A.E. Purple, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (B.A.E. Purple, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F34 5G (Electric Black, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F34 5G (Mystic Green, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F34 5G (Orchid Violet, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F14 5G (OMG Black, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F04 (Jade Purple, 64 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy F04 (Opal Green, 64 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy M14 5G (Smoky Teal, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Guru Music 2\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy S22 5G (Phantom Black, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Guru Music 2\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:65 Item is SAMSUNG Galaxy M14 5G (Icy Silver, 128 GB)\nDEBUG    CompareItemsPage:flipkart_compare_items_page.py:67 Clicked on SAMSUNG Galaxy M14 5G (Icy Silver, 128 GB)\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;testReport.html&#34;}"></div>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.11.4&#34;, &#34;Platform&#34;: &#34;Windows-10-10.0.22621-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;7.4.0&#34;, &#34;pluggy&#34;: &#34;1.2.0&#34;}, &#34;Plugins&#34;: {&#34;html&#34;: &#34;4.0.1&#34;, &#34;metadata&#34;: &#34;3.0.0&#34;}}, &#34;tests&#34;: {&#34;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_search_filters_1_test_set_1&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;URL&#34;, &#34;format_type&#34;: &#34;url&#34;, &#34;content&#34;: &#34;https://www.yatra.com/&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}, {&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;Additional HTML&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_search_filters_1_test_set_1&#34;, &#34;duration&#34;: &#34;00:01:10&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testcases/test_filpkartAutomation.py::TestFlipkartAutomation::test_search_filters_1_test_set_1&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:01:10&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;a target=\&#34;_blank\&#34; href=\&#34;https://www.yatra.com/\&#34; class=\&#34;col-links__extra url\&#34;&gt;URL&lt;/a&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;testcases.test_filpkartAutomation.TestFlipkartAutomation testMethod=test_search_filters_1_test_set_1&amp;gt;, search_input = &#39;mobile phone&#39;, ratings = 4.2\nitem_input_2 = &#39;SAMSUNG Galaxy S23 Ultra 5G (Green, 256 GB)&#39;\n\n    @file_data(\&#34;../Testdata/testSearchFiltersData.json\&#34;)\n    def test_search_filters(self, search_input, ratings, item_input_2):\n        flipkart_asserts = Utils()\n        hp = HomePage(self.driver)\n        hp.SearchProduct(search_input)\n        srp = SearchResultsPage(self.driver)\n        all_item_ratings = srp.applySearchFilters()\n&amp;gt;       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\n\ntestcases\\test_filpkartAutomation.py:51: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nutilities\\utils.py:34: in assertRatingsText\n    self.assert_all()\nC:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py:139: in assert_all\n    self.fail(&#39;&#39;.join(failure_output))\nE   AssertionError: ++++ soft assert failure details follow below ++++\nE   \nE   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nE   The following 28 failures were found in \&#34;wrapper\&#34; (utilities.utils.Utils):\nE   +----------------------+----------------------+----------------------+\nE    Failure 1 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [1/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 2 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [2/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 3 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [3/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 4 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [4/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 5 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [5/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 6 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.0 not greater than or equal to 4.2\nE   \nE   -+ [6/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 7 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [7/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 8 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [8/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 9 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [9/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 10 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [10/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 11 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [11/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 12 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [12/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 13 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [13/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 14 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [14/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 15 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [15/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 16 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [16/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 17 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [17/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 18 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [18/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 19 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [19/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 20 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [20/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 21 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [21/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 22 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [22/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 23 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [23/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 24 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [24/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 25 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.8 not greater than or equal to 4.2\nE   \nE   -+ [25/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 26 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 4.1 not greater than or equal to 4.2\nE   \nE   -+ [26/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 27 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [27/28] +-\nE   \nE   +----------------------+----------------------+----------------------+\nE    Failure 28 (\&#34;wrapper\&#34; method)\nE   +----------------------+----------------------+----------------------+\nE   Traceback (most recent call last):\nE     File \&#34;C:\\TestFilpkartAutomation\\utilities\\utils.py\&#34;, line 29, in assertRatingsText\nE       self.soft_assert(self.assertGreaterEqual, float(rating), rate_num)\nE     File \&#34;C:\\TestFilpkartAutomation\\testcases\\test_filpkartAutomation.py\&#34;, line 51, in test_search_filters\nE       flipkart_asserts.assertRatingsText(all_item_ratings, ratings)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\ddt.py\&#34;, line 220, in wrapper\nE       return func(self, *args, **kwargs)\nE     File \&#34;C:\\Users\\Caitan\\AppData\\Roaming\\Python\\Python311\\site-packages\\softest\\case.py\&#34;, line 62, in soft_assert\nE       assert_method(*arguments, **keywords)\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 1277, in assertGreaterEqual\nE       self.fail(self._formatMessage(msg, standardMsg))\nE     File \&#34;C:\\Program Files\\Python311\\Lib\\unittest\\case.py\&#34;, line 703, in fail\nE       raise self.failureException(msg)\nE   AssertionError: 3.9 not greater than or equal to 4.2\nE   \nE   -+ [28/28] +-\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;testReport.html&#34;}"></div>
     <script>
       (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
